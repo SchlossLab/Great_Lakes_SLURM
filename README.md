@@ -19,7 +19,7 @@ Run these commands from the command line.
 
 | Command | Action |
 |---------|--------|
-| .shch script.sh` | Submit `script.sh` as a job |
+| `sbatch script.sh` | Submit `script.sh` as a job |
 | `squeue -j jobid` | Check job status by `jobid` |
 | `squeue -u uniqname` | Check job status by user's `uniqname`|
 | `scancel jobid` | Kill a job by `jobid` |
@@ -29,14 +29,10 @@ Run these commands from the command line.
 | `scontrol show job jobid` | Show details for a job by `jobid`|
 | `srun --pty --nodes=1 --cpus-per-task=4 --time=30:00 --account=training /bin/bash` | Run an interactive job |
 
-### Batch Options
+### Options
 
-These options go in your submission scripts.
-
-| Option | Action |
-|--------|--------|
-
-| `--cpus-per-task` | If running a parallel job, make sure this is the number of CPUs you need + 1. |
+Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available options.
+These options go in your submission scripts. SLURM options start with `#SBATCH`. Anything else starting with `#` is a comment.
 
 ### Examples
 
@@ -50,12 +46,12 @@ The workflow:
 
 1. Edit your R script, `Rbatch.R`, with your preferred text editor.
 
-1. Edit the batch script, `Rbatch.sh`. SLURM commands start with `#SBATCH`. Anything else starting with `#` is a comment.
+1. Edit the submission script, `Rbatch.sh`. 
 
 1. Load R and submit the job.
 	```
 	module load R
-.shch Rbatch.sh
+	sbatch Rbatch.sh
 	```
 	It will tell you the `jobid` in a message: `Submitted batch job 32965`.
 
