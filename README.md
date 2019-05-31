@@ -7,6 +7,7 @@ Using the Great Lakes cluster and batch computing with SLURM
 * [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/)
 * [Introduction to the Great Lakes cluster and batch computing with SLURM](https://docs.google.com/presentation/d/1yZCyfBaK9GVCI64oUW-99HtUO5RNwSlqpeUNo8BjgWI/edit#slide=id.p1)
 * Advanced batch computing with SLURM on the Great Lakes cluster
+* [migrating from PBS-Torque to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/)
 * [Globus](https://arc-ts.umich.edu/globus/) for high-speed data transfer
 * [Snakemake profile for SLURM](https://github.com/Snakemake-Profiles/slurm)
 * [Kelly's preferred configuration for HPCs](https://github.com/kelly-sovacool/hpc-config)
@@ -31,7 +32,7 @@ Note that everything on Great Lakes will be on-demand. For time, you will only b
 
 ### Options
 
-Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available option.
+Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available option. Also see this guide for [migrating your PBS-torque scripts to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/).
 These options go in your submission scripts ([example](examples/Rbatch.sh)). SLURM options start with `#SBATCH`. Anything else starting with `#` is a comment.
 
 ### Examples
