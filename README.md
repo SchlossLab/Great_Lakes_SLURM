@@ -32,15 +32,15 @@ Note that everything on Great Lakes will be on-demand. For time, you will only b
 
 ### Options
 
-Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available option. Also see this guide for [migrating your PBS-torque scripts to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/).
+Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available options. Also see this guide for [migrating your PBS-torque scripts to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/).
 These options go in your submission scripts ([example](examples/Rbatch.sh)). SLURM options start with `#SBATCH`. Anything else starting with `#` is a comment.
 
 ### Examples
 
 ```
-└── [examples/](examples/)
-    ├── [Rbatch.R](examples/Rbatch.R)
-    └── [Rbatch.sh](examples/Rbatch.sh)
+└── examples/
+    ├── Rbatch.R
+    └── Rbatch.sh
 ```
 
 The workflow:
