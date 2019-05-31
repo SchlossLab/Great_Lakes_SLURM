@@ -15,9 +15,11 @@ Using the Great Lakes cluster and batch computing with SLURM
 
 ### Commands
 
+Run these commands from the command line.
+
 | Command | Action |
 |---------|--------|
-| `sbatch script.sbat` | Submit `script.sbat` as a job |
+| .shch script.sh` | Submit `script.sh` as a job |
 | `squeue -j jobid` | Check job status by `jobid` |
 | `squeue -u uniqname` | Check job status by user's `uniqname`|
 | `scancel jobid` | Kill a job by `jobid` |
@@ -27,24 +29,33 @@ Using the Great Lakes cluster and batch computing with SLURM
 | `scontrol show job jobid` | Show details for a job by `jobid`|
 | `srun --pty --nodes=1 --cpus-per-task=4 --time=30:00 --account=training /bin/bash` | Run an interactive job |
 
+### Batch Options
+
+These options go in your submission scripts.
+
+| Option | Action |
+|--------|--------|
+
+| `--cpus-per-task` | If running a parallel job, make sure this is the number of CPUs you need + 1. |
+
 ### Examples
 
 ```
 └── [examples/](examples/)
     ├── [Rbatch.R](examples/Rbatch.R)
-    └── [Rbatch.sbat](examples/Rbatch.sbat)
+    └── [Rbatch.sh](examples/Rbatch.sh)
 ```
 
 The workflow:
 
 1. Edit your R script, `Rbatch.R`, with your preferred text editor.
 
-1. Edit the batch script, `Rbatch.sbat`. SLURM commands start with `#SBATCH`. Anything else starting with `#` is a comment.
+1. Edit the batch script, `Rbatch.sh`. SLURM commands start with `#SBATCH`. Anything else starting with `#` is a comment.
 
 1. Load R and submit the job.
 	```
 	module load R
-	sbatch Rbatch.sbat
+.shch Rbatch.sh
 	```
 	It will tell you the `jobid` in a message: `Submitted batch job 32965`.
 
