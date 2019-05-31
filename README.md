@@ -1,4 +1,4 @@
-# Great_Lakes_SLURM
+# Great Lakes SLURM
 Using the Great Lakes cluster and batch computing with SLURM 
 
 ## Resources
