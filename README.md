@@ -27,10 +27,12 @@ Using the Great Lakes cluster and batch computing with SLURM
 | `scontrol show job jobid` | Show details for a job by `jobid`|
 | `srun --pty --nodes=1 --cpus-per-task=4 --time=30:00 --account=training /bin/bash` | Run an interactive job |
 
+Note that everything on Great Lakes will be on-demand. For time, you will only be charged for the walltime you use. But for memory, CPU, & GPU, you will be charged for the resources you *ask for*.
+
 ### Options
 
-Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available options.
-These options go in your submission scripts. SLURM options start with `#SBATCH`. Anything else starting with `#` is a comment.
+Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available option.
+These options go in your submission scripts ([example](examples/Rbatch.sh)). SLURM options start with `#SBATCH`. Anything else starting with `#` is a comment.
 
 ### Examples
 
