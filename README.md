@@ -15,8 +15,6 @@ Using the Great Lakes cluster and batch computing with SLURM
 
 ### Commands
 
-Run these commands from the command line.
-
 | Command | Action |
 |---------|--------|
 | `sbatch script.sh` | Submit `script.sh` as a job |
