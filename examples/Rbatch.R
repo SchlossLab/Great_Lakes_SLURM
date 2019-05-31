@@ -1,0 +1,23 @@
+n <- 100
+set.seed(123)
+
+# generate data
+x <- rnorm(n)
+y <- x + rnorm(n)
+rand.data <- data.frame(x, y)
+
+# create samples
+K <- 10
+samples <- split(sample(1:n), rep(1:K, length = n))
+
+#  Cross-validation function
+cv.fold.fun <- function(index) {
+  fit <- lm(y~x, data = rand.data[-samples[[index]],])
+  pred <- predict(fit, newdata = rand.data[samples[[index]],])
+  return((pred - rand.data$y[samples[[index]]])^2)
+}
+
+#####  Sequential version
+res.fun   <- lapply(seq(along = samples), cv.fold.fun)
+mean(unlist(res.fun))
+
