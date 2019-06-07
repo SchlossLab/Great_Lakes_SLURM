@@ -19,7 +19,7 @@ Using the Great Lakes cluster and batch computing with SLURM
 
 | Command | Action |
 |---------|--------|
-| `sbatch script.sh` | Submit `script.sh` as a job |
+| .shch script.sh` | Submit `script.sh` as a job |
 | `squeue -j jobid` | Check job status by `jobid` |
 | `squeue -u uniqname` | Check job status by user's `uniqname`|
 | `scancel jobid` | Kill a job by `jobid` |
@@ -34,7 +34,7 @@ Note that everything on Great Lakes will be on-demand. For time, you will only b
 ### Options
 
 Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available options. Also see this guide for [migrating your PBS-torque scripts to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/).
-These options go in your submission scripts ([example](examples/R/Rbatch.sh)). All lines with SLURM options start with `#SBATCH`. With the exception of the hashbang (`#!`), anything else starting with `#` is a comment.
+These options go in your submission scripts ([example](examples/simpleR/Rbatch.sh)). All lines with SLURM options start with `#SBATCH`. With the exception of the hashbang (`#!`), anything else starting with `#` is a comment.
 
 ### Examples
 
@@ -42,16 +42,16 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 
 #### R scripts
 
-[`examples/R/`](examples/R/)
+[`examples/simpleR/`](examples/simpleR/)
 
-1. Edit your R script, `Rbatch.R`, with your preferred text editor.
+1. Edit your R script, [`Rbatch.R`](examples/simpleR/Rbatch.R), with your preferred text editor.
 
-1. Edit the submission script, `Rbatch.sh`. 
+1. Edit the submission script, [`Rbatch.sh`](examples/simpleR/Rbatch.sh). 
 
 1. Load R and submit the job.
 	```
 	module load R
-	sbatch Rbatch.sh
+.shch Rbatch.sh
 	```
 	It will tell you the `jobid` in a message: `Submitted batch job 32965`.
 
@@ -75,12 +75,12 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 
 The matlab script [`arr.m`](examples/arrayjob/arr.m) takes a job id as input and works on only one task.
 
-The submission script [`submit.sbat`](examples/arrayjob/submit.sbat) sets up the job array with three tasks and runs the matlab script once per task. To make a job array, use the sbatch command `#SBATCH --array=1-3`. Edit the integers `1` and `3` to modify the number of tasks in the array and the numbers they're assigned.
+The submission script [`submit.sh`](examples/arrayjob/submit.sbat) sets up the job array with three tasks and runs the matlab script once per task. To make a job array, use the sbatch command `#SBATCH --array=1-3`. Edit the integers `1` and `3` to modify the number of tasks in the array and the numbers they're assigned.
 
 Submit the job with:
 ```
 module load matlab
-sbatch submit.sbat
+sbatch submit.sh
 ```
 #### Dependent scheduling
 
@@ -90,17 +90,17 @@ sbatch submit.sbat
 
 	1 minute before New Year's Day 2020:
 	```
-	sbatch --begin 2019-12-31T23:59:00 j1.sbat
+.shch --begin 2019-12-31T23:59:00 j1.sbat
 	```
 
 	At the next 6pm:
 	```
-	sbatch --begin 18:00 j2.sbat
+.shch --begin 18:00 j2.sbat
 	```
 * Submit a job after another job completes:
 	```
-	JOBID=`sbatch --parsable first.sbat`   # JOBID <- first’s jobid
-	sbatch dependency=afterany:$JOBID second.sbat
+	JOBID=.shch --parsable first.sbat`   # JOBID <- first’s jobid
+.shch dependency=afterany:$JOBID second.sbat
 	```
 
 ## Conda
