@@ -34,17 +34,13 @@ Note that everything on Great Lakes will be on-demand. For time, you will only b
 ### Options
 
 Take a look at the [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/) from ARC-TS for a list of available options. Also see this guide for [migrating your PBS-torque scripts to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/).
-These options go in your submission scripts ([example](examples/Rbatch.sh)). All lines with SLURM options start with `#SBATCH`. With the exception of the hashbang (`#!`), anything else starting with `#` is a comment.
+These options go in your submission scripts ([example](examples/R/Rbatch.sh)). All lines with SLURM options start with `#SBATCH`. With the exception of the hashbang (`#!`), anything else starting with `#` is a comment.
 
 ### Examples
 
-```
-└── examples/
-    ├── Rbatch.R
-    └── Rbatch.sh
-```
+More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta login node (`beta-login.stage.arc-ts.umich.edu`).
 
-The workflow:
+#### R scripts
 
 1. Edit your R script, `Rbatch.R`, with your preferred text editor.
 
@@ -71,4 +67,3 @@ The workflow:
 	```
 	where `32965` is the `jobid`.
 
-More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta login node (`beta-login.stage.arc-ts.umich.edu`).
