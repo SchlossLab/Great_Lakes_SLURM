@@ -110,6 +110,10 @@ An example using Trinity RNA-seq: [`examples/trinity/`](examples/trinity/)
 
 The submission script [`trinity.sbat`](examples/trinity/trinity.sbat) contains lots of boilerplate code to handle intermediate directories & files. If you find yourself writing complicated bash scripts like this, consider whether you should instead use a proper workflow manager such as Snakemake. See [a minimal example of using Snakemake on the HPC](https://github.com/kelly-sovacool/snakemake_hpc_mwe).
 
+#### Multiprocessing
+
+[`examples/multiR/`](examples/multiR)
+
 ## Conda
 
 Rather than using the modules provided, I prefer to use conda to manage my software dependencies.

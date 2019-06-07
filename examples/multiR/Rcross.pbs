@@ -1,0 +1,28 @@
+####  PBS preamble
+#PBS -N Rmulti
+#PBS -m abe
+
+#PBS -l nodes=1:ppn=5,pmem=3750mb,walltime=15:00
+#PBS -V
+
+#PBS -A FluxTraining_flux
+#PBS -l qos=flux
+#PBS -q flux
+####  End PBS preamble
+
+#  Show nodes/cores you're running on
+if [ -n "$PBS_JOBID" ]; then
+	echo "Job running on:"
+	qstat -n $PBS_JOBID | tail -n+7
+fi
+
+#  Change to the directory you submitted from
+if [ -n "$PBS_O_WORKDIR" ]; then
+	cd $PBS_O_WORKDIR
+fi
+echo "Job working directory:"
+pwd
+echo
+
+#  Put your job commands after this line
+R CMD BATCH --vanilla Rcross.R Rcross.out
