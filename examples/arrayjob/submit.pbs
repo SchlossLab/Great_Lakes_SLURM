@@ -1,0 +1,24 @@
+#!/bin/sh 
+#PBS -N arr
+#PBS -A FluxTraining_flux
+#PBS -q flux
+#PBS -l mem=1gb
+#PBS -t 1-3
+#PBS -m abe 
+#PBS -V 
+
+####  End PBS preamble
+####  Commands follow this line
+
+if [ -e "$PBS_NODEFILE" ] ; then
+    echo "Running on"
+    uniq -c $PBS_NODEFILE
+fi
+
+if [ -d "$PBS_O_WORKDIR" ] ; then
+    cd $PBS_O_WORKDIR
+fi
+echo "Running from $(pwd)"
+
+# Execute matlab
+matlab -nodisplay -r arr

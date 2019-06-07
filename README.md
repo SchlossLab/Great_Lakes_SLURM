@@ -42,6 +42,8 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 
 #### R scripts
 
+`[examples/R/](examples/R/)`
+
 1. Edit your R script, `Rbatch.R`, with your preferred text editor.
 
 1. Edit the submission script, `Rbatch.sh`. 
@@ -66,4 +68,17 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 	less slurm-32965.out
 	```
 	where `32965` is the `jobid`.
+
+#### Job Arrays
+
+`[examples/arrayjob/](examples/arrayjob/)`
+
+The matlab script `[arr.m](examples/arrayjob/arr.m)` takes a job id as input and works on only one task.
+
+The submission script `[submit.sbat](examples/arrayjob/submit.sbat)` sets up the job array with three tasks and runs the matlab script once per task.
+
+```
+module load matlab
+sbatch submit.sbat
+```
 
