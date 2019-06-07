@@ -4,7 +4,8 @@ Using the Great Lakes cluster and batch computing with SLURM
 ## Resources
 
 * Slides: [Introduction to the Great Lakes cluster and batch computing with SLURM](https://docs.google.com/presentation/d/1yZCyfBaK9GVCI64oUW-99HtUO5RNwSlqpeUNo8BjgWI/edit#slide=id.p1)
-* Slides: Advanced batch computing with SLURM on the Great Lakes cluster
+* Slides: [Advanced batch computing with SLURM on the Great Lakes cluster](https://github.com/SchlossLab/Great_Lakes_SLURM)
+* Slides: [MPI profiling with Allinea MAP](https://cscar.research.umich.edu/wp-content/uploads/sites/5/2016/04/galexv20160606.pdf)
 * ARC-TS: [Great Lakes overview](https://arc-ts.umich.edu/greatlakes/)
 * ARC-TS: [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/)
 * ARC-TS: [Migrating from PBS-Torque to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/)
