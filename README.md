@@ -75,10 +75,32 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 
 The matlab script [`arr.m`](examples/arrayjob/arr.m) takes a job id as input and works on only one task.
 
-The submission script [`submit.sbat`](examples/arrayjob/submit.sbat) sets up the job array with three tasks and runs the matlab script once per task.
+The submission script [`submit.sbat`](examples/arrayjob/submit.sbat) sets up the job array with three tasks and runs the matlab script once per task. To make a job array, use the sbatch command `#SBATCH --array=1-3`. Edit the integers `1` and `3` to modify the number of tasks in the array and the numbers they're assigned.
 
+Submit the job with:
 ```
 module load matlab
 sbatch submit.sbat
 ```
+#### Dependent scheduling
 
+* Submit a job at a given time:
+
+	1 minute before New Year's Day 2020:
+	```
+	sbatch --begin 2019-12-31T23:59:00 j1.sbat
+	```
+
+	At the next 6pm:
+	```
+	sbatch --begin 18:00 j2.sbat
+	```
+* Submit a job after another job completes:
+	```
+	JOBID=`sbatch --parsable first.sbat`   # JOBID <- first’s jobid
+	sbatch dependency=afterany:$JOBID second.sbat
+	```
+
+## Conda
+
+Rather than using the modules provided, I prefer to use conda environments to manage my software dependencies.
