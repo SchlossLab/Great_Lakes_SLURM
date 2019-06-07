@@ -116,7 +116,7 @@ The submission script [`trinity.sbat`](examples/trinity/trinity.sbat) contains l
 
 ## Conda
 
-Rather than using the modules provided, I prefer to use conda to manage my software dependencies.
+Rather than using the modules provided, [I](github.com/kelly-sovacool) prefer to use conda to manage my software dependencies.
 
 Download the latest installer for [Anaconda](https://www.anaconda.com/distribution/#download-section) (includes everything) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (includes only the minimum -- faster to install).
 
