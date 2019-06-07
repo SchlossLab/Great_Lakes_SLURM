@@ -84,6 +84,8 @@ sbatch submit.sbat
 ```
 #### Dependent scheduling
 
+[`examples/depjob/`](examples/depjob/)
+
 * Submit a job at a given time:
 
 	1 minute before New Year's Day 2020:

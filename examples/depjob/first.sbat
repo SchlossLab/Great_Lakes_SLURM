@@ -1,0 +1,16 @@
+#!/bin/bash
+
+####  preamble
+
+#SBATCH --job-name first 
+#SBATCH --mail-type=NONE
+
+#SBATCH --account training
+
+#SBATCH --mem=1gb
+
+####  End preamble
+
+#  Put your job commands after this line
+sleep 60
+echo "Job $SLURM_JOBNAME with JOBID $SLURM_JOB_ID executed at $(date)"
