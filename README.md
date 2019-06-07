@@ -103,4 +103,24 @@ sbatch submit.sbat
 
 ## Conda
 
-Rather than using the modules provided, I prefer to use conda environments to manage my software dependencies.
+Rather than using the modules provided, I prefer to use conda to manage my software dependencies.
+
+Download the latest installer for [Anaconda](https://www.anaconda.com/distribution/#download-section) (includes everything) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (includes only the minimum -- faster to install).
+
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
+
+I like to create a separate conda environment for each of my projects. Example:
+
+Create a conda environment called `rstats` and install R & the tidyverse packages from the `r` channel:
+```
+conda create -n rstats -c r r r-tidyverse
+```
+
+Before submitting jobs for your project `rstats`, activate the environment:
+```
+conda activate rstats
+```
+
+The packages installed in `rstats` are then available for any jobs you submit while the environment is activated.
