@@ -42,7 +42,7 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 
 #### R scripts
 
-`[examples/R/](examples/R/)`
+[`examples/R/`](examples/R/)
 
 1. Edit your R script, `Rbatch.R`, with your preferred text editor.
 
@@ -71,11 +71,11 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 
 #### Job Arrays
 
-`[examples/arrayjob/](examples/arrayjob/)`
+[`examples/arrayjob/`](examples/arrayjob/)
 
-The matlab script `[arr.m](examples/arrayjob/arr.m)` takes a job id as input and works on only one task.
+The matlab script [`arr.m`](examples/arrayjob/arr.m) takes a job id as input and works on only one task.
 
-The submission script `[submit.sbat](examples/arrayjob/submit.sbat)` sets up the job array with three tasks and runs the matlab script once per task.
+The submission script [`submit.sbat`](examples/arrayjob/submit.sbat) sets up the job array with three tasks and runs the matlab script once per task.
 
 ```
 module load matlab
