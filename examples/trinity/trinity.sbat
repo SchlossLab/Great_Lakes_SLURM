@@ -1,0 +1,70 @@
+##!/bin/bash
+
+####  preamble
+
+#SBATCH --job-name=trinity
+
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=1:00:00
+
+#SBATCH --account=training
+
+
+####  End preamble
+
+#  Put your job commands here:
+
+
+# Create temporary directory, which is removed at end of run
+TEMP=$(mktemp -d)
+if [ $? -ne 0 ]; then
+	echo "can't create $TEMP ... exit"
+	exit 1
+fi
+
+trap '/bin/rm -rf $TEMP; exit' EXIT
+
+# Copy data to $TEMP
+echo "Copying to $TEMP ..."
+if ! cp reads.right.fq.gz reads.left.fq.gz $TEMP; then
+	echo "can't copy reads.right/.left to $TEMP ... exit"
+	exit 1
+fi
+
+if ! cd $TEMP; then
+	echo "can't chdir to $TEMP ... exit"
+	exit 1
+fi
+
+if [ -e reads.right.fq.gz ] && [ ! -e reads.right.fq ]; then
+    echo "Unzipping reads.right ..."
+    gunzip -c reads.right.fq.gz > reads.right.fq
+fi
+
+if [ -e reads.left.fq.gz ] && [ ! -e reads.left.fq ]; then
+    echo "Unzipping reads.left ..."
+    gunzip -c reads.left.fq.gz > reads.left.fq
+fi
+
+# Run Trinity
+echo "Running Trinity ..."
+OUTFILE=trinity_out_dir.$(date +%F-%T)
+echo + 
+Trinity --seqType fq --max_memory 2G \
+	--left reads.left.fq.gz \
+	--right reads.right.fq.gz \
+	--SS_lib_type RF \
+	--output $OUTFILE \
+	--CPU ${SLURM_CPUS_PER_TASK:-1}
+
+# Save results
+echo "Saving results from $TEMP/$OUTFILE to $SLURM_SUBMIT_DIR ..."
+if ! cp -ar $TEMP/$OUTFILE $SLURM_SUBMIT_DIR; then
+	echo "can't copy results to $SLURM_SUBMIT_DIR ... exit"
+	exit 1
+fi
+
+# Clean up /tmp
+/bin/rm -rf $TEMP

@@ -1,0 +1,94 @@
+####  PBS preamble
+
+#PBS -N trinity
+
+#PBS -m abe
+
+# Change number of cores, amount of memory, walltime, amount of local disk:
+#PBS -l nodes=1:ppn=4,mem=4gb,walltime=1:00:00,ddisk=4gb
+#PBS -j oe
+#PBS -V
+
+# Change "example_flux" to the name of your Flux allocation:
+#PBS -A FluxTraining_flux
+#PBS -q flux
+
+####  End PBS preamble
+
+#  Show nodes/cores you're running on
+if [ -n "$PBS_JOBID" ]; then
+	echo "Job running on:"
+	qstat -n $PBS_JOBID | tail -n+7
+fi
+
+#  Change to the directory you submitted from
+if [ -n "$PBS_O_WORKDIR" ]; then
+	cd $PBS_O_WORKDIR
+else
+	PBS_O_WORKDIR=$(pwd)
+fi
+echo "Job working directory:"
+pwd
+echo
+
+#  Put your job commands here:
+
+# Ensure that Trinity modules are loaded
+Trinity --cite >/dev/null 2>/dev/null
+if [ $? -ne 0 ]; then
+	echo "can't run Trinity ..."
+	echo "execute \"module load bowtie/1.0.0 bowtie2 trinity\" before submitting ..."
+	exit 1
+fi
+
+
+# Create temporary directory, which is removed at end of run
+TEMP=$(mktemp -d)
+if [ $? -ne 0 ]; then
+	echo "can't create $TEMP ... exit"
+	exit 1
+fi
+
+trap '/bin/rm -rf $TEMP; exit' EXIT
+
+# Copy data to $TEMP
+echo "Copying to $TEMP ..."
+if ! cp reads.right.fq.gz reads.left.fq.gz $TEMP; then
+	echo "can't copy reads.right/.left to $TEMP ... exit"
+	exit 1
+fi
+
+if ! cd $TEMP; then
+	echo "can't chdir to $TEMP ... exit"
+	exit 1
+fi
+
+if [ -e reads.right.fq.gz ] && [ ! -e reads.right.fq ]; then
+    echo "Unzipping reads.right ..."
+    gunzip -c reads.right.fq.gz > reads.right.fq
+fi
+
+if [ -e reads.left.fq.gz ] && [ ! -e reads.left.fq ]; then
+    echo "Unzipping reads.left ..."
+    gunzip -c reads.left.fq.gz > reads.left.fq
+fi
+
+# Run Trinity
+echo "Running Trinity ..."
+OUTFILE=trinity_out_dir.$(date +%F-%T)
+Trinity --seqType fq --max_memory 2G \
+	--left reads.left.fq.gz \
+	--right reads.right.fq.gz \
+	--SS_lib_type RF \
+	--output $OUTFILE \
+	--CPU ${PBS_NP:-1}
+
+# Save results
+echo "Saving results from $TEMP/$OUTFILE to $PBS_O_WORKDIR ..."
+if ! cp -ar $TEMP/$OUTFILE $PBS_O_WORKDIR; then
+	echo "can't copy results to $PBS_O_WORKDIR ... exit"
+	exit 1
+fi
+
+# Clean up /tmp
+/bin/rm -rf $TEMP

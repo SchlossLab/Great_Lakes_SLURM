@@ -103,6 +103,12 @@ sbatch submit.sh
 .shch dependency=afterany:$JOBID second.sbat
 	```
 
+#### Trinity workflow
+
+An example using Trinity RNA-seq: [`examples/trinity/`](examples/trinity/)
+
+The submission script [`trinity.sbat`](examples/trinity/trinity.sbat) contains lots of boilerplate code to cleanup intermediate directories in files. If you find yourself writing complicated bash scripts like this, consider whether you should be using snakemake instead (see [a minimal example of using Snakemake on the HPC](https://github.com/kelly-sovacool/snakemake_hpc_mwe)).
+
 ## Conda
 
 Rather than using the modules provided, I prefer to use conda to manage my software dependencies.
