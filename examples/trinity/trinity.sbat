@@ -1,4 +1,4 @@
-##!/bin/bash
+#!/bin/bash
 
 ####  preamble
 
@@ -16,6 +16,7 @@
 
 #  Put your job commands here:
 
+WDIR=$(pwd)
 
 # Create temporary directory, which is removed at end of run
 TEMP=$(mktemp -d)
@@ -51,8 +52,8 @@ fi
 # Run Trinity
 echo "Running Trinity ..."
 OUTFILE=trinity_out_dir.$(date +%F-%T)
-echo + 
-Trinity --seqType fq --max_memory 2G \
+mkdir $OUTFILE
+echo + Trinity --seqType fq --max_memory 2G \
 	--left reads.left.fq.gz \
 	--right reads.right.fq.gz \
 	--SS_lib_type RF \
@@ -60,9 +61,9 @@ Trinity --seqType fq --max_memory 2G \
 	--CPU ${SLURM_CPUS_PER_TASK:-1}
 
 # Save results
-echo "Saving results from $TEMP/$OUTFILE to $SLURM_SUBMIT_DIR ..."
-if ! cp -ar $TEMP/$OUTFILE $SLURM_SUBMIT_DIR; then
-	echo "can't copy results to $SLURM_SUBMIT_DIR ... exit"
+echo "Saving results from $TEMP/$OUTFILE to $WDIR ..."
+if ! cp -ar $TEMP/$OUTFILE $WDIR; then
+	echo "can't copy results to $WDIR ... exit"
 	exit 1
 fi
 
