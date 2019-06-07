@@ -19,7 +19,7 @@ Using the Great Lakes cluster and batch computing with SLURM
 
 | Command | Action |
 |---------|--------|
-| .shch script.sh` | Submit `script.sh` as a job |
+| `sbatch script.sh` | Submit `script.sh` as a job |
 | `squeue -j jobid` | Check job status by `jobid` |
 | `squeue -u uniqname` | Check job status by user's `uniqname`|
 | `scancel jobid` | Kill a job by `jobid` |
@@ -51,7 +51,7 @@ More example files are in `/scratch/data/workshops/IntroGreatLakes/` on the beta
 1. Load R and submit the job.
 	```
 	module load R
-.shch Rbatch.sh
+	sbatch Rbatch.sh
 	```
 	It will tell you the `jobid` in a message: `Submitted batch job 32965`.
 
@@ -90,20 +90,21 @@ sbatch submit.sh
 
 	1 minute before New Year's Day 2020:
 	```
-.shch --begin 2019-12-31T23:59:00 j1.sbat
+	sbatch --begin 2019-12-31T23:59:00 j1.sbat
 	```
 
 	At the next 6pm:
 	```
-.shch --begin 18:00 j2.sbat
-	```
-* Submit a job after another job completes:
-	```
-	JOBID=.shch --parsable first.sbat`   # JOBID <- first’s jobid
-.shch dependency=afterany:$JOBID second.sbat
+	sbatch --begin 18:00 j2.sbat
 	```
 
-#### Trinity workflow
+* Submit a job after another job completes:
+	```
+	JOBID=`sbatch --parsable first.sbat`   # JOBID <- first’s jobid
+	sbatch dependency=afterany:$JOBID second.sbat
+	```
+
+#### Workflow
 
 An example using Trinity RNA-seq: [`examples/trinity/`](examples/trinity/)
 
