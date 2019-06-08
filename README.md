@@ -137,3 +137,5 @@ conda activate rstats
 ```
 
 The packages installed in `rstats` are then available for any jobs you submit while the environment is activated.
+
+See the [conda user guide](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) for more details.
