@@ -10,7 +10,6 @@ Using the Great Lakes cluster and batch computing with SLURM
 * ARC-TS: [SLURM user guide](https://arc-ts.umich.edu/greatlakes/slurm-user-guide/)
 * ARC-TS: [Migrating from PBS-Torque to SLURM](https://arc-ts.umich.edu/migrating-from-torque-to-slurm/)
 * ARC-TS: [Globus high-speed data transfer](https://arc-ts.umich.edu/globus/) 
-* Kelly's [config files for HPCs](https://github.com/kelly-sovacool/hpc-config)
 * Kelly's [example of using Snakemake on HPC](https://github.com/kelly-sovacool/snakemake_hpc_mwe)
 * [Snakemake profile for SLURM](https://github.com/Snakemake-Profiles/slurm)
 
