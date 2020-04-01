@@ -28,6 +28,7 @@ Using the Great Lakes cluster and batch computing with SLURM
 | `scontrol show node node_name` | Show details for a node `node_name` |
 | `scontrol show job jobid` | Show details for a job by `jobid`|
 | `srun --pty --nodes=1 --cpus-per-task=4 --time=30:00 --account=training /bin/bash` | Run an interactive job |
+| `seff jobid` | Show total time and memory usage for job (plus other things) |
 
 Note that everything on Great Lakes will be on-demand. For memory, CPU, & GPU, you will be charged for the resources you *ask for*. However, you will only be charged for the walltime your jobs *use*.
 
