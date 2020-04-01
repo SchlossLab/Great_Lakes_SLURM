@@ -139,3 +139,14 @@ conda activate rstats
 The packages installed in `rstats` are then available for any jobs you submit while the environment is activated.
 
 See the [conda user guide](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) for more details.
+
+## Misc Tips
+
+### Internet 
+
+The nodes on GreatLakes don't have internet access by default. 
+If your job needs internet access, put this line in your submission script after the slurm options:
+
+```bash
+source /etc/profile.d/http_proxy.sh
+```
