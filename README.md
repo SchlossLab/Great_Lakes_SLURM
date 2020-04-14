@@ -102,7 +102,7 @@ sbatch submit.sh
 * Submit a job after another job completes:
 	```
 	JOBID=`sbatch --parsable first.sbat`   # JOBID <- first’s jobid
-	sbatch dependency=afterany:$JOBID second.sbat
+	sbatch --dependency=afterany:$JOBID second.sbat
 	```
 
 #### Workflow
