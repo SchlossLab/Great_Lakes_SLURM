@@ -13,6 +13,7 @@ Using the Great Lakes cluster and batch computing with SLURM
 * ARC-TS: [Globus high-speed data transfer](https://arc-ts.umich.edu/globus/) 
 * Kelly's [example of using Snakemake on HPC](https://github.com/kelly-sovacool/snakemake_hpc_mwe)
 * [Snakemake profile for SLURM](https://github.com/Snakemake-Profiles/slurm)
+* [conda on the cluster](https://github.com/um-dang/conda_on_the_cluster)
 
 ## SLURM Basics
 
@@ -140,7 +141,7 @@ conda activate rstats
 
 The packages installed in `rstats` are then available for any jobs you submit while the environment is activated.
 
-See the [conda user guide](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) for more details.
+See the [conda user guide](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) for more details and [this tutorial on using conda on the cluster](https://github.com/um-dang/conda_on_the_cluster).
 
 ## Misc Tips
 
