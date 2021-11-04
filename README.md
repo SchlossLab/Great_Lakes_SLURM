@@ -126,6 +126,10 @@ Download the latest installer for [Anaconda](https://www.anaconda.com/distributi
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
+Run the installer:
+```
+bash Miniconda3-latest-Linux-x86_64.sh
+```
 
 I like to create a separate conda environment for each of my projects. Example:
 
