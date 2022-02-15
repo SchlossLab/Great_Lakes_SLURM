@@ -157,3 +157,8 @@ If your job needs internet access, put this line in your submission script after
 ```bash
 source /etc/profile.d/http_proxy.sh
 ```
+
+### Hardware
+
+[![](images/glc-hardware.png)](https://arc.umich.edu/greatlakes/configuration/)
+
